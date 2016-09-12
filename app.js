@@ -51,6 +51,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
     .write('uploads/resize.png', function(err){
       if (!err) { console.log('done'); }
     });
+  console.log('yo');
 
   setTimeout(function() {
     res.render('index', { name: 'resize.png',  path: '/public/HackTX.png' });

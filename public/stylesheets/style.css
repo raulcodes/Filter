@@ -1,0 +1,95 @@
+html {
+  height: 100%;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-size: cover;
+  min-height: 100%
+
+  background: rgba(73,155,234,1);
+  background: -moz-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(18,77,120,1) 97%, rgba(18,77,120,1) 99%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(97%, rgba(18,77,120,1)), color-stop(99%, rgba(18,77,120,1)));
+  background: -webkit-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(18,77,120,1) 97%, rgba(18,77,120,1) 99%);
+  background: -o-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(18,77,120,1) 97%, rgba(18,77,120,1) 99%);
+  background: -ms-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(18,77,120,1) 97%, rgba(18,77,120,1) 99%);
+  background: linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(18,77,120,1) 97%, rgba(18,77,120,1) 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#124d78', GradientType=1 );
+}
+
+a {
+  color: #00B7FF;
+}
+
+.title {
+  font-size: 20px;
+  left: 0;
+  right: 0;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.box {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 40px;
+  width: 140px;
+  height: 30px;
+}
+
+input.upload {
+  padding-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.btn {
+  background-color: #CE0019;
+  border-radius: 2px;
+  border-style: none;
+  border-radius: 3px;
+  padding: 0.5em 0.5em;
+  font-size: 2em;
+  font-family: Josefin Sans, Helvetica;
+  color: #EAF0CE;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.center {
+  font-family: Josefin Sans, Helvetica;
+  text-align: center;
+}

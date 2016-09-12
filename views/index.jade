@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  img.logo(src='images/Logo.svg')
+
+  form.center(role='form', enctype='multipart/form-data', method='POST')
+      .box
+        span.title Upload Profile Picture
+        .fileUpload.btn
+          span Choose File
+          input.upload(type='file', name='myFile')
+        button.btn.btn-primary(type='submit') Submit
+
+
+  if (name)
+    img(src= '#{name}')

@@ -51,23 +51,23 @@ function getRandom() {
 app.post('/', upload.single('myFile'), (req, res, next) => {
   console.log(req.file);
 
-  // fs.unlink('HackTX.png', (err) => {
-  //   if (err) {
-  //     console.log('error deleting file');
-  //   }
-  //   else console.log('done');
-  // });
-  // fs.unlink('resize.png', (err) => {
-  //   if (err) {
-  //     console.log('error deleting file');
-  //   }
-  //   else console.log('done');
-  // });
+  fs.unlink('HackTX.png', (err) => {
+    if (err) {
+      console.log('error deleting file');
+    }
+    else console.log('done');
+  });
+  fs.unlink('resize.png', (err) => {
+    if (err) {
+      console.log('error deleting file');
+    }
+    else console.log('done');
+  });
 
-  // var rand = getRandom();
-  // var res = getRandom();
-  // var resPath = res + '.png';
-  // var path = 'uploads/' + rand + '.png';
+  var rand = getRandom();
+  var res = getRandom();
+  var resPath = res + '.png';
+  var path = 'uploads/' + rand + '.png';
 
   fs.rename(req.file.path, req.file.destination + '/HackTX.png');
   //req.file.filename = req.file.filename + '.png';

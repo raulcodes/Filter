@@ -69,6 +69,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
 
   fs.rename(req.file.path, req.file.destination + '/' + rand + '.png');
   //req.file.filename = req.file.filename + '.png';
+  console.log(path);
 
   gm(path)
     .scale(400, 400)

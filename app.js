@@ -67,7 +67,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
 
   setTimeout(function() {
     res.render('index', { name: 'resize.png',  path: '/public/HackTX.png' });
-  }, 500);
+  }, 1500);
 
 });
 

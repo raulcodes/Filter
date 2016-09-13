@@ -39,6 +39,15 @@ app.get('/', (req, res) => {
   res.render('views/index');
 });
 
+function getRandom() {
+  var rand = [];
+
+  for (var i = 0; i < 5; i++) {
+    rand.push(Math.floor(Math.random() * 10));
+  }
+  return rand.join("");
+}
+
 app.post('/', upload.single('myFile'), (req, res, next) => {
   console.log(req.file);
 
@@ -55,18 +64,20 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   //   else console.log('done');
   // });
 
-  fs.rename(req.file.path, req.file.destination + '/HackTX.png');
+  var rand = getRandom();
+
+  fs.rename(req.file.path, req.file.destination + '/' + rand + '.png');
   //req.file.filename = req.file.filename + '.png';
 
-  gm('uploads/HackTX.png')
+  gm('uploads/' + rand + '.png')
     .scale(400, 400)
     .draw(['image Over 0,0 0,0 uploads/test2.png'])
-    .write('uploads/resize.png', function(err){
+    .write('uploads/' + rand + '.png', function(err){
       if (!err) { console.log('done'); }
     });
 
   setTimeout(function() {
-    res.render('index', { name: 'resize.png',  path: '/public/HackTX.png' });
+    res.render('index', { name: rand + '.png',  path: '/public/HackTX.png' });
   }, 1500);
 
 });

@@ -75,12 +75,12 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   gm(path)
     .scale(400, 400)
     .draw(['image Over 0,0 0,0 uploads/test2.png'])
-    .write(res, function(err){
+    .write('uploads/'+ res + '.png', function(err){
       if (!err) { console.log('done'); }
     });
 
   setTimeout(function() {
-    res.render('index', { name: rand + '.png',  path: '/public/HackTX.png' });
+    res.render('index', { name: res + '.png',  path: '/public/HackTX.png' });
   }, 1500);
 
 });

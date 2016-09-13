@@ -64,24 +64,24 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   //   else console.log('done');
   // });
 
-  var rand = getRandom();
-  var res = getRandom();
-  var resPath = res + '.png';
-  var path = 'uploads/' + rand + '.png';
+  // var rand = getRandom();
+  // var res = getRandom();
+  // var resPath = res + '.png';
+  // var path = 'uploads/' + rand + '.png';
 
-  fs.rename(req.file.path, req.file.destination + '/' + rand + '.png');
+  fs.rename(req.file.path, req.file.destination + '/HackTX.png');
   //req.file.filename = req.file.filename + '.png';
   console.log(path);
 
-  gm(path)
+  gm('uploads/HackTX.png')
     .scale(400, 400)
     .draw(['image Over 0,0 0,0 uploads/test2.png'])
-    .write('uploads/'+ res + '.png', function(err){
+    .write('uploads/resize.png', function(err){
       if (!err) { console.log('done'); }
     });
 
   setTimeout(function() {
-    res.render('index', { name: resPath,  path: '/public/HackTX.png' });
+    res.render('index', { name: 'resize.png',  path: '/public/HackTX.png' });
   }, 1500);
 
 });

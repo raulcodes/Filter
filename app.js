@@ -65,6 +65,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   // });
 
   var rand = getRandom();
+  var res = getRandom();
   var path = 'uploads/' + rand + '.png';
 
   fs.rename(req.file.path, req.file.destination + '/' + rand + '.png');
@@ -74,7 +75,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   gm(path)
     .scale(400, 400)
     .draw(['image Over 0,0 0,0 uploads/test2.png'])
-    .write(path, function(err){
+    .write(res, function(err){
       if (!err) { console.log('done'); }
     });
 

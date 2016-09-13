@@ -42,16 +42,17 @@ app.get('/', (req, res) => {
 app.post('/', upload.single('myFile'), (req, res, next) => {
   console.log(req.file);
 
-  fs.unlink('/uploads/HackTX.png', (err) => {
+  fs.unlink('uploads/HackTX.png', (err) => {
     if (err) {
       console.log('error deleting file');
     }
     else console.log('done');
   });
-  fs.unlink('/uploads/resize.png', (err) => {
+  fs.unlink('uploads/resize.png', (err) => {
     if (err) {
       console.log('error deleting file');
     }
+    else console.log('done');
   });
 
   fs.rename(req.file.path, req.file.destination + '/HackTX.png');

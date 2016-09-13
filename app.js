@@ -66,6 +66,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
 
   var rand = getRandom();
   var res = getRandom();
+  var resPath = res + '.png';
   var path = 'uploads/' + rand + '.png';
 
   fs.rename(req.file.path, req.file.destination + '/' + rand + '.png');
@@ -80,7 +81,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
     });
 
   setTimeout(function() {
-    res.render('index', { name: res + '.png',  path: '/public/HackTX.png' });
+    res.render('index', { name: resPath,  path: '/public/HackTX.png' });
   }, 1500);
 
 });

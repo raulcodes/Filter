@@ -51,39 +51,70 @@ function getRandom() {
 app.post('/', upload.single('myFile'), (req, res, next) => {
   console.log(req.file);
 
-  fs.unlink('HackTX.png', (err) => {
-    if (err) {
-      console.log('error deleting file');
-    }
-    else console.log('done');
-  });
-  fs.unlink('resize.png', (err) => {
-    if (err) {
-      console.log('error deleting file');
-    }
-    else console.log('done');
-  });
+  // fs.open("uploads/HackTX.png", "r", (err, file) => {
+  //   if (file) {
+  //     fs.unlink('uploads/HackTX.png', (err) => {
+  //       if (err) {
+  //         console.log('error deleting file');
+  //       }
+  //       else console.log('done');
+  //     });
+  //   }
+  // });
+  //
+  // fs.open("uploads/resize.png", "r", (err, file) => {
+  //   if (file) {
+  //     fs.unlink('uploads/resize.png', (err) => {
+  //       if (err) {
+  //         console.log('error deleting file');
+  //       }
+  //       else console.log('done');
+  //     });
+  //   }
+  // });
 
-  var rand = getRandom();
-  var res = getRandom();
-  var resPath = res + '.png';
-  var path = 'uploads/' + rand + '.png';
+  // var rand = getRandom();
+  // var res = getRandom();
+  // var resPath = res + '.png';
+  // var path = 'uploads/' + rand + '.png';
 
   fs.rename(req.file.path, req.file.destination + '/HackTX.png');
-  //req.file.filename = req.file.filename + '.png';
+  // //req.file.filename = req.file.filename + '.png';
   console.log(path);
 
-  gm('uploads/HackTX.png')
-    .scale(400, 400)
-    .draw(['image Over 0,0 0,0 uploads/test2.png'])
-    .write('uploads/resize.png', function(err){
-      if (!err) { console.log('done'); }
-    });
+  gm('uploads/HackTX.png').size(function(err, value) {
+    if (value) {
 
-  setTimeout(function() {
-    res.render('index', { name: 'resize.png',  path: '/public/HackTX.png' });
-  }, 1500);
+      if (value.height <= 1000) {
 
+        //scale filter down to pro pic size
+        gm('uploads/filter.png')
+          .scale(value.width, value.height)
+          .write('uploads/newfilter.png', (err) => {
+            if (err) { console.log('scale of filter failed'); }
+          });
+
+        setTimeout(function() {
+          gm('uploads/HackTX.png')
+            .draw(['image Over 0,0 0,0 uploads/newfilter.png'])
+            .write('uploads/resize.png', function(err){
+              if (!err) { console.log('done'); }
+            });
+        }, 5500);
+
+      } else {
+        gm('uploads/HackTX.png')
+          .scale(1000, 1000)
+          .draw(['image Over 0,0 0,0 uploads/filter.png'])
+          .write('uploads/resize.png', function(err){
+            if (!err) { console.log('done'); }
+          });
+      }
+
+    } else console.log('error printing size of photo');
+  });
+
+  setTimeout(function() { res.render('index.jade', { name: 'HackTX.png' }); }, 1500);
 });
 
 // catch 404 and forward to error handler

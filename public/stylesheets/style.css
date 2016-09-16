@@ -139,4 +139,6 @@ input.upload {
 .center {
   font-family: Josefin Sans, Helvetica;
   text-align: center;
+  font-size: 1.2em;
+  color: white;
 }

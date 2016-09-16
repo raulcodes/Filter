@@ -78,7 +78,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   // var resPath = res + '.png';
   // var path = 'uploads/' + rand + '.png';
 
-  fs.rename(req.file.path, req.file.destination + '/HackTX.png');
+  fs.rename(req.file.path, req.file.destination + '/propic.png');
   // //req.file.filename = req.file.filename + '.png';
   console.log(path);
 

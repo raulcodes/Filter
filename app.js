@@ -82,7 +82,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
   // //req.file.filename = req.file.filename + '.png';
   console.log(path);
 
-  gm('uploads/HackTX.png').size(function(err, value) {
+  gm('uploads/propic.png').size(function(err, value) {
     if (value) {
 
       if (value.height <= 1000) {
@@ -95,18 +95,18 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
           });
 
         setTimeout(function() {
-          gm('uploads/HackTX.png')
+          gm('uploads/propic.png')
             .draw(['image Over 0,0 0,0 uploads/newfilter.png'])
-            .write('uploads/resize.png', function(err){
+            .write('uploads/HackTX.png', function(err){
               if (!err) { console.log('done'); }
             });
         }, 5500);
 
       } else {
-        gm('uploads/HackTX.png')
+        gm('uploads/propic.png')
           .scale(1000, 1000)
           .draw(['image Over 0,0 0,0 uploads/filter.png'])
-          .write('uploads/resize.png', function(err){
+          .write('uploads/HackTX.png', function(err){
             if (!err) { console.log('done'); }
           });
       }

@@ -3,27 +3,29 @@ extends layout
 block content
   img.logo(src='images/Logo.svg')
 
-  p.center *For best results, use a high resolution square photo.
-  p.center This can be done by saving your profile picture from the Facebook mobile app.
+  if (!name)
+    p.center *For best results, use a high resolution square photo.
+    p.center This can be done by saving your profile picture from the Facebook mobile app.
 
-  form.center(role='form', enctype='multipart/form-data', method='POST')
-    .box
-      span.title Upload Profile Picture
-      .fileUpload.btnFile
-        h4.txt Choose File
-        input.upload(id='uploadBtn', type='file', name='myFile')
-      input.path(id='uploadFile', disabled='disabled')
-      button.btn.btn-primary(type='submit') Submit
+    form.center(role='form', enctype='multipart/form-data', method='POST')
+      .box
+        span.title Upload Profile Picture
+        .fileUpload.btnFile
+          h4.txt Choose File
+          input.upload(id='uploadBtn', type='file', name='myFile')
+        input.path(id='uploadFile', disabled='disabled')
+        button.btn.btn-primary(type='submit') Submit
 
-  script.
-    document.getElementById("uploadBtn").onchange = function () {
-      var name = this.value;
-      console.log(this.value);
-      name.split("");
-      console.log(name);
-      document.getElementById("uploadFile").value = this.value;
-    };
+    script.
+      document.getElementById("uploadBtn").onchange = function () {
+        var name = this.value;
+        console.log(this.value);
+        name.split("");
+        console.log(name);
+        document.getElementById("uploadFile").value = this.value;
+      };
 
   if (name)
+    p.center See you at HackTX!
     .image
       img.imgsize(src= '#{name}')

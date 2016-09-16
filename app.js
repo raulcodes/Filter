@@ -114,7 +114,7 @@ app.post('/', upload.single('myFile'), (req, res, next) => {
     } else console.log('error printing size of photo');
   });
 
-  setTimeout(function() { res.render('index.jade', { name: 'HackTX.png' }); }, 1500);
+  setTimeout(function() { res.render('index.jade', { name: 'HackTX.png' }); }, 2000);
 });
 
 // catch 404 and forward to error handler
